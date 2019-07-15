@@ -24,9 +24,7 @@ export default class ListUser extends Component {
     onPut=(id)=>{
         axios.put(`http://localhost:3000/user/${id}`)
         .then(response => {
-            let newBarang = this.state.data.map(item=>{
-                return item.id
-            })
+            let newBarang = window.prompt('write it!');
             this.setState({
                 barang:newBarang
             })
@@ -60,7 +58,7 @@ export default class ListUser extends Component {
 
         })
     }
-
+    
     render() {
         const list= this.state.data.map( item =>{
             return (
@@ -68,11 +66,11 @@ export default class ListUser extends Component {
                     <td> {item.namabarang}</td>
                     <td><Button color="danger" onClick={()=>this.onDelete(item.id)}>Delete</Button></td>
                     <td><Button color="primary" onClick={()=>this.onPut(item.id)}>Edit</Button></td>
-
+                    {/* <td><Button color="primary" onClick={()=>this.onPut(item.id)}>nanti</Button></td> */}
                 </tr>
             )
         })
-
+        
         return (
             <Table>
                 <thead>
